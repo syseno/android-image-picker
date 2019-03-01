@@ -12,6 +12,7 @@ import com.esafirm.imagepicker.features.ImagePickerConfig;
 import com.esafirm.imagepicker.features.ReturnMode;
 import com.esafirm.imagepicker.features.imageloader.ImageLoader;
 import com.esafirm.imagepicker.helper.ConfigUtils;
+import com.esafirm.imagepicker.helper.Constants;
 import com.esafirm.imagepicker.helper.ImagePickerUtils;
 import com.esafirm.imagepicker.listeners.OnFolderClickListener;
 import com.esafirm.imagepicker.listeners.OnImageClickListener;
@@ -147,21 +148,21 @@ public class RecyclerViewManager {
     public void setFolderAdapter(List<Folder> folders) {
         List<Folder> sortedFolder = new ArrayList<>();
         for (Folder folder : folders) {
-            if (folder.getFolderName().equals("Camera")) {
+            if (folder.getFolderName().equals(Constants.CAMERA_FOLDER)) {
                 sortedFolder.add(folder);
             } else {
                 Timber.d("Folder Camera not found");
             }
         }
         for (Folder folder : folders) {
-            if (folder.getFolderName().equals("HiAppImages")) {
+            if (folder.getFolderName().equals(Constants.HI_APP_IMAGES_FOLDER)) {
                 sortedFolder.add(folder);
             } else {
                 Timber.d("Folder HiAppImages not found");
             }
         }
         for (Folder folder : folders) {
-            if (folder.getFolderName().equals("HiAppWallpaper")) {
+            if (folder.getFolderName().equals(Constants.HI_APP_WALLPAPER_FOLDER)) {
                 sortedFolder.add(folder);
             } else {
                 Timber.d("Folder HiAppWallpaper not found");
