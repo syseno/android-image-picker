@@ -169,7 +169,9 @@ public class RecyclerViewManager {
             }
         }
         for (Folder folder : folders) {
-            if (!folder.getFolderName().equals("HiAppWallpaper") && !folder.getFolderName().equals("HiAppImages") && !folder.getFolderName().equals("Camera")) {
+            if (!folder.getFolderName().equals(Constants.HI_APP_WALLPAPER_FOLDER) &&
+                    !folder.getFolderName().equals(Constants.HI_APP_IMAGES_FOLDER) &&
+                    !folder.getFolderName().equals(Constants.CAMERA_FOLDER)) {
                 sortedFolder.add(folder);
             }
         }
