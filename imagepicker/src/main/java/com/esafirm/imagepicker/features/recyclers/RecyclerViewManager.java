@@ -25,6 +25,7 @@ import java.util.List;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import timber.log.Timber;
 
 import static com.esafirm.imagepicker.features.IpCons.MAX_LIMIT;
 import static com.esafirm.imagepicker.features.IpCons.MODE_MULTIPLE;
@@ -144,7 +145,34 @@ public class RecyclerViewManager {
     }
 
     public void setFolderAdapter(List<Folder> folders) {
-        folderAdapter.setData(folders);
+        List<Folder> sortedFolder = new ArrayList<>();
+        for (Folder folder : folders) {
+            if (folder.getFolderName().equals("Camera")) {
+                sortedFolder.add(folder);
+            } else {
+                Timber.d("Folder Camera not found");
+            }
+        }
+        for (Folder folder : folders) {
+            if (folder.getFolderName().equals("HiAppImages")) {
+                sortedFolder.add(folder);
+            } else {
+                Timber.d("Folder HiAppImages not found");
+            }
+        }
+        for (Folder folder : folders) {
+            if (folder.getFolderName().equals("HiAppWallpaper")) {
+                sortedFolder.add(folder);
+            } else {
+                Timber.d("Folder HiAppWallpaper not found");
+            }
+        }
+        for (Folder folder : folders) {
+            if (!folder.getFolderName().equals("HiAppWallpaper") && !folder.getFolderName().equals("HiAppImages") && !folder.getFolderName().equals("Camera")) {
+                sortedFolder.add(folder);
+            }
+        }
+        folderAdapter.setData(sortedFolder);
         setItemDecoration(folderColumns);
         recyclerView.setAdapter(folderAdapter);
 
