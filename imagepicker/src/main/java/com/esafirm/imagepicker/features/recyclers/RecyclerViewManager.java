@@ -12,7 +12,6 @@ import com.esafirm.imagepicker.features.ImagePickerConfig;
 import com.esafirm.imagepicker.features.ReturnMode;
 import com.esafirm.imagepicker.features.imageloader.ImageLoader;
 import com.esafirm.imagepicker.helper.ConfigUtils;
-import com.esafirm.imagepicker.helper.Constants;
 import com.esafirm.imagepicker.helper.ImagePickerUtils;
 import com.esafirm.imagepicker.listeners.OnFolderClickListener;
 import com.esafirm.imagepicker.listeners.OnImageClickListener;
@@ -26,7 +25,6 @@ import java.util.List;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import timber.log.Timber;
 
 import static com.esafirm.imagepicker.features.IpCons.MAX_LIMIT;
 import static com.esafirm.imagepicker.features.IpCons.MODE_MULTIPLE;
