@@ -27,6 +27,7 @@ import com.esafirm.imagepicker.features.cameraonly.CameraOnlyConfig;
 import com.esafirm.imagepicker.features.common.BaseConfig;
 import com.esafirm.imagepicker.features.recyclers.RecyclerViewManager;
 import com.esafirm.imagepicker.helper.ConfigUtils;
+import com.esafirm.imagepicker.helper.Constants;
 import com.esafirm.imagepicker.helper.ImagePickerPreferences;
 import com.esafirm.imagepicker.helper.IpCrasher;
 import com.esafirm.imagepicker.helper.IpLogger;
@@ -43,6 +44,7 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import timber.log.Timber;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -534,8 +536,53 @@ public class ImagePickerFragment extends Fragment implements ImagePickerView {
     @Override
     public void showFetchCompleted(List<Image> images, List<Folder> folders) {
         ImagePickerConfig config = getImagePickerConfig();
+
         if (config != null && config.isFolderMode()) {
-            setFolderAdapter(folders);
+            List<Folder> sortedFolder = new ArrayList<>();
+            ArrayList<Image> allImages = new ArrayList<>(images);
+
+            Folder allMediaFolder = new Folder(Constants.ALL_MEDIA_FOLDER);
+            allMediaFolder.setImages(allImages);
+            folders.add(allMediaFolder);
+
+            for (Folder folder : folders) {
+                if (folder.getFolderName().equals(Constants.CAMERA_FOLDER)) {
+                    sortedFolder.add(folder);
+                } else {
+                    Timber.d("Folder Camera not found");
+                }
+            }
+
+            for (Folder folder : folders) {
+                if (folder.getFolderName().equals(Constants.ALL_MEDIA_FOLDER)) {
+                    sortedFolder.add(folder);
+                } else {
+                    Timber.d("Folder All Media not found");
+                }
+            }
+
+            for (Folder folder : folders) {
+                if (folder.getFolderName().equals(Constants.HI_APP_IMAGES_FOLDER)) {
+                    sortedFolder.add(folder);
+                } else {
+                    Timber.d("Folder HiAppImages not found");
+                }
+            }
+            for (Folder folder : folders) {
+                if (folder.getFolderName().equals(Constants.HI_APP_WALLPAPER_FOLDER)) {
+                    sortedFolder.add(folder);
+                } else {
+                    Timber.d("Folder HiAppWallpaper not found");
+                }
+            }
+            for (Folder folder : folders) {
+                if (!folder.getFolderName().equals(Constants.HI_APP_WALLPAPER_FOLDER) &&
+                        !folder.getFolderName().equals(Constants.HI_APP_IMAGES_FOLDER) &&
+                        !folder.getFolderName().equals(Constants.CAMERA_FOLDER)) {
+                    sortedFolder.add(folder);
+                }
+            }
+            setFolderAdapter(sortedFolder);
         } else {
             setImageAdapter(images);
         }
