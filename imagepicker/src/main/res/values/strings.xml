@@ -27,5 +27,6 @@
     <string name="ef_video" translatable="false">Video</string>
     <string name="ef_content_desc_folder" translatable="false">Folder</string>
     <string name="ef_content_desc_image" translatable="false">Image</string>
+    <string name="ef_all_media_folder" translatable="false">All Media</string>
 
 </resources>

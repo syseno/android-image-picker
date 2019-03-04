@@ -146,36 +146,7 @@ public class RecyclerViewManager {
     }
 
     public void setFolderAdapter(List<Folder> folders) {
-        List<Folder> sortedFolder = new ArrayList<>();
-        for (Folder folder : folders) {
-            if (folder.getFolderName().equals(Constants.CAMERA_FOLDER)) {
-                sortedFolder.add(folder);
-            } else {
-                Timber.d("Folder Camera not found");
-            }
-        }
-        for (Folder folder : folders) {
-            if (folder.getFolderName().equals(Constants.HI_APP_IMAGES_FOLDER)) {
-                sortedFolder.add(folder);
-            } else {
-                Timber.d("Folder HiAppImages not found");
-            }
-        }
-        for (Folder folder : folders) {
-            if (folder.getFolderName().equals(Constants.HI_APP_WALLPAPER_FOLDER)) {
-                sortedFolder.add(folder);
-            } else {
-                Timber.d("Folder HiAppWallpaper not found");
-            }
-        }
-        for (Folder folder : folders) {
-            if (!folder.getFolderName().equals(Constants.HI_APP_WALLPAPER_FOLDER) &&
-                    !folder.getFolderName().equals(Constants.HI_APP_IMAGES_FOLDER) &&
-                    !folder.getFolderName().equals(Constants.CAMERA_FOLDER)) {
-                sortedFolder.add(folder);
-            }
-        }
-        folderAdapter.setData(sortedFolder);
+        folderAdapter.setData(folders);
         setItemDecoration(folderColumns);
         recyclerView.setAdapter(folderAdapter);
 
