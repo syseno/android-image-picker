@@ -9,7 +9,7 @@ android {
     defaultConfig {
         minSdkVersion sdk.minSdk
         targetSdkVersion sdk.targetSdk
-        versionCode 2
+        versionCode 3
         versionName "2.1.0"
     }
 

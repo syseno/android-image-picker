@@ -562,23 +562,24 @@ public class ImagePickerFragment extends Fragment implements ImagePickerView {
             }
 
             for (Folder folder : folders) {
-                if (folder.getFolderName().equals(Constants.HI_APP_IMAGES_FOLDER)) {
+                if (folder.getFolderName().equals(Constants.HELO_IMAGES_FOLDER)) {
                     sortedFolder.add(folder);
                 } else {
-                    Timber.d("Folder HiAppImages not found");
+                    Timber.d("Folder heloImages not found");
                 }
             }
             for (Folder folder : folders) {
-                if (folder.getFolderName().equals(Constants.HI_APP_WALLPAPER_FOLDER)) {
+                if (folder.getFolderName().equals(Constants.HELO_WALLPAPER_FOLDER)) {
                     sortedFolder.add(folder);
                 } else {
-                    Timber.d("Folder HiAppWallpaper not found");
+                    Timber.d("Folder heloWallpaper not found");
                 }
             }
             for (Folder folder : folders) {
-                if (!folder.getFolderName().equals(Constants.HI_APP_WALLPAPER_FOLDER) &&
-                        !folder.getFolderName().equals(Constants.HI_APP_IMAGES_FOLDER) &&
-                        !folder.getFolderName().equals(Constants.CAMERA_FOLDER)) {
+                if (!folder.getFolderName().equals(Constants.HELO_WALLPAPER_FOLDER) &&
+                        !folder.getFolderName().equals(Constants.HELO_IMAGES_FOLDER) &&
+                        !folder.getFolderName().equals(Constants.CAMERA_FOLDER) &&
+                        !folder.getFolderName().equals(Constants.ALL_MEDIA_FOLDER)) {
                     sortedFolder.add(folder);
                 }
             }
