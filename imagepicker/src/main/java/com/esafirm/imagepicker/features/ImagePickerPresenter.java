@@ -65,14 +65,14 @@ class ImagePickerPresenter extends BasePresenter<ImagePickerView> {
                 runOnUiIfAvailable(() -> {
                     getView().showFetchCompleted(images, folders);
 
-                    final boolean isEmpty = folders != null
-                            ? folders.isEmpty()
-                            : images.isEmpty();
-
-                    if (isEmpty) {
-                        getView().showEmpty();
+                    if (folders!= null) {
+                        if (folders.isEmpty() || images.isEmpty()) {
+                            getView().showEmpty();
+                        } else {
+                            getView().showLoading(false);
+                        }
                     } else {
-                        getView().showLoading(false);
+                        getView().showEmpty();
                     }
                 });
             }
