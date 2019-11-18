@@ -176,6 +176,7 @@ public class ImagePickerActivity extends AppCompatActivity implements ImagePicke
     @Override
     public void finishPickImages(Intent result) {
         setResult(RESULT_OK, result);
+        finish();
     }
 
     /* --------------------------------------------------- */
